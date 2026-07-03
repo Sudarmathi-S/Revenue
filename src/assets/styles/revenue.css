@@ -1,0 +1,80 @@
+.table-container {
+  margin: 40px;
+  overflow-x: auto;
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow:
+    0 6px 18px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e5e7eb;
+  padding: 20px;
+}
+
+.product-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+}
+
+/* Header */
+
+.product-table thead {
+  background: linear-gradient(90deg, #203a70, #2d4f95);
+}
+
+.product-table th {
+  color: white;
+  padding: 16px 20px;
+  text-align: left;
+  font-weight: 600;
+  letter-spacing: .5px;
+}
+
+/* Body */
+
+.product-table td {
+  padding: 15px 20px;
+  border-bottom: 1px solid #ececec;
+}
+
+/* Zebra Rows */
+
+.product-table tbody tr:nth-child(even) {
+  background: #f8faff;
+}
+
+/* Hover */
+
+.product-table tbody tr:hover {
+  background: #eaf2ff;
+  transition: .25s;
+}
+
+/* Revenue Right Align */
+
+.product-table td:last-child,
+.product-table th:last-child {
+  text-align: right;
+}
+
+/* Footer */
+
+.product-table tfoot {
+  background: #edf3ff;
+  font-weight: 700;
+}
+
+.product-table tfoot td {
+  padding: 18px 20px;
+  color: #1d3557;
+  border-top: 2px solid #2d4f95;
+}
+
+/* Rounded Header */
+
+.product-table thead th:first-child {
+  border-top-left-radius: 14px;
+}
+
+.product-table thead th:last-child {
+  border-top-right-radius: 14px;
+}

@@ -1,0 +1,22 @@
+[
+  { "product": "Laptop", "revenue": 48000 },
+  { "product": "Mouse", "revenue": 6100 },
+  { "product": "Keyboard", "revenue": 6800 },
+  { "product": "Monitor", "revenue": 27500 },
+  { "product": "SSD", "revenue": 29500 },
+  { "product": "Graphics Card", "revenue": 76000 },
+  { "product": "CPU", "revenue": 57000 },
+  { "product": "RAM", "revenue": 19500 },
+  { "product": "Smart Watch", "revenue": 29000 },
+  { "product": "Tablet", "revenue": 39000 },
+  { "product": "Smartphone", "revenue": 72000 },
+  { "product": "Drone", "revenue": 85000 },
+  { "product": "VR Headset", "revenue": 46000 },
+  { "product": "External HDD", "revenue": 17500 },
+  { "product": "Microphone", "revenue": 9800 },
+  { "product": "Speakers", "revenue": 7300 },
+  { "product": "Scanner", "revenue": 13400 },
+  { "product": "Camera", "revenue": 64000 },
+  { "product": "Projector", "revenue": 35500 },
+  { "product": "Router", "revenue": 10200 }
+]
