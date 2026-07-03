@@ -19,11 +19,11 @@ const RevenueList = () => {
                         </tr>
                     ))} */}
                     <tr key={1}>
-                        <td>{"Product Name 1"}</td>
+                        <td>{"Product name 1"}</td>
                         <td>{"1,000"}</td>
                     </tr>
                     <tr key={2}>
-                        <td>{"Product Name 2"}</td>
+                        <td>{"Product name 2"}</td>
                         <td>{"2,000"}</td>
                     </tr>
                 </tbody>
