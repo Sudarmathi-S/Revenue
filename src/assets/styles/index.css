@@ -12,6 +12,17 @@ body,
     justify-content: end;
     margin-bottom: 15px;
     flex-wrap: wrap;
+    position: relative;
+}
+
+.search-icon {
+  position: absolute;
+  margin-right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #c1c3c5;
+  display: flex;
+  align-items: center;
 }
 
 /* Input */
