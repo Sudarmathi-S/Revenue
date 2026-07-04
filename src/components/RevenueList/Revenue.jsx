@@ -84,7 +84,7 @@ const RevenueList = () => {
             error ? <Error errorHead={"Unable to Load Products"} error={error} /> :
                 <div className="table-container">
                     <Search
-                        placeholder={"Type to search the product..."}
+                        placeholder={"Type to search..."}
                         search={search}
                         setSearch={setSearch}
                     />
