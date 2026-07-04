@@ -4,7 +4,7 @@ import RevenueList from "./components/RevenueList/Revenue";
 
 const App = () => {
   return (
-    <div className="bg-gray-200 min-h-screen">
+    <div className="">
       <Header />
       <RevenueList />
     </div>

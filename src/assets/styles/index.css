@@ -1,3 +1,124 @@
-body, #root {
-  font-family: sans-serif !important;
+body,
+#root {
+    font-family: sans-serif !important;
+    min-height: 100vh !important;
+}
+
+/* Search Container */
+.search-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    justify-content: end;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+/* Input */
+.search-input {
+    width: 320px;
+    max-width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 15px;
+    outline: none;
+    transition: all 0.25s ease;
+}
+
+/* Placeholder */
+.search-input::placeholder {
+    color: #94a3b8;
+}
+
+/* Focus */
+.search-input:focus {
+    border-color: #2d4f95;
+    box-shadow: 0 0 0 3px rgba(45, 79, 149, 0.15);
+}
+
+/* Hover */
+.search-input:hover {
+    border-color: #2d4f95;
+}
+
+.loader-container {
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.loader {
+    width: 60px;
+    height: 60px;
+    border: 6px solid #e5e7eb;
+    border-top: 6px solid #2d4f95;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin-bottom: 20px;
+}
+
+.loader-container h2 {
+    color: #203a70;
+    margin-bottom: 10px;
+}
+
+.loader-container p {
+    color: #6b7280;
+    font-size: 15px;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+.error-container {
+    max-width: 500px;
+    margin: 80px auto;
+    padding: 35px;
+    text-align: center;
+    background: #fff5f5;
+    border: 1px solid #fecaca;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, .08);
+}
+
+.error-icon {
+    font-size: 55px;
+    margin-bottom: 15px;
+}
+
+.error-container label {
+    color: #dc2626;
+    margin-bottom: 15px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.error-container p {
+    color: #6b7280;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.retry-btn {
+    padding: 10px 24px;
+    border: none;
+    border-radius: 8px;
+    background: #2d4f95;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    transition: .3s;
+    font-family: sans-serif !important;
+}
+
+.retry-btn:hover {
+    background: #203a70;
 }

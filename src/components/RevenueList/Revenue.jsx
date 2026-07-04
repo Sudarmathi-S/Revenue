@@ -1,42 +1,99 @@
+import { useEffect, useMemo, useState } from "react";
 import "../../assets/styles/revenue.css";
+import { formatNumber } from "../../utils/common";
+import Search from "../common/Search";
+import RevenueTable from "./RevenueTable";
+import Loader from "../common/Loader";
+import Error from "../common/Error";
 
 const RevenueList = () => {
-    return (
-        <div className="table-container">
-            <table className="product-table">
-                <thead>
-                    <tr>
-                        <th>Product Name</th>
-                        <th>Total Revenue</th>
-                    </tr>
-                </thead>
 
-                <tbody>
-                    {/* {filteredProducts.map((item) => (
-                        <tr key={item.product}>
-                            <td>{item.product}</td>
-                            <td>{formatNumber(item.revenue)}</td>
-                        </tr>
-                    ))} */}
-                    <tr key={1}>
-                        <td>{"Product name 1"}</td>
-                        <td>{"1,000"}</td>
-                    </tr>
-                    <tr key={2}>
-                        <td>{"Product name 2"}</td>
-                        <td>{"2,000"}</td>
-                    </tr>
-                </tbody>
+    const [products, setProducts] = useState([]);
+    const [search, setSearch] = useState("");
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState("");
 
-                <tfoot>
-                    <tr>
-                        {/* <td>Total Revenue</td>
-                        <td>{formatNumber(totalRevenue)}</td> */}
-                    </tr>
-                </tfoot>
-            </table>
-        </div>
-    )
+    useEffect(() => {
+        const fetchProducts = async () => {
+            try {
+                const responses = await Promise.all([
+                    fetch("/json/branch/branch1.json"),
+                    fetch("/json/branch/branch2.json"),
+                    fetch("/json/branch/branch3.json"),
+                ]);
+                // Check if all requests were successful
+                const data = await Promise.all(
+                    responses?.map(async (response) => {
+                        if (!response.ok && response?.json()) {
+                            setError("Something went wrong while loading products.");
+                            throw new Error(`Failed to fetch ${response.url}`);
+                        }
+                        return await response?.json();
+                    })
+                );
+                const allProducts = data?.flat();
+                const revenueMap = new Map();
+                allProducts?.forEach(({ product, revenue }) => {
+                    revenueMap.set(
+                        product,
+                        (revenueMap.get(product) || 0) + revenue
+                    );
+                });
+                const mergedProducts = [...revenueMap.entries()]
+                    .map(([product, revenue]) => ({
+                        product,
+                        revenue,
+                    }))
+                    .sort((a, b) => a.product.localeCompare(b.product));
+                setProducts(mergedProducts);
+            } catch (err) {
+                setError("Something went wrong while loading products.");
+            } finally {
+                setTimeout(() => {
+                    setLoading(false);
+                }, 500)
+            }
+        };
+
+        fetchProducts();
+    }, []);
+
+    const filteredProducts = useMemo(() => {
+        const searchTerm = search?.toLowerCase() || "";
+        return products?.filter(item =>
+            item?.product
+                .toLowerCase()
+                .includes(searchTerm)
+        );
+    }, [products, search]);
+
+    const totalRevenue = useMemo(() => {
+        return filteredProducts?.reduce(
+            (sum, item) => sum + item.revenue,
+            0
+        );
+    }, [filteredProducts]);
+
+    return (<>
+        {loading ?
+            <Loader
+                loading={loading}
+                loadHead={"Loading Products..."}
+                loadMessage={"Please wait while we aggregate revenue from all branches."}
+            /> :
+            error ? <Error errorHead={"Unable to Load Products"} error={error} /> :
+                <div className="table-container">
+                    <Search
+                        placeholder={"Type to search the product..."}
+                        search={search}
+                        setSearch={setSearch}
+                    />
+                    <RevenueTable
+                        products={filteredProducts}
+                        totalRevenue={totalRevenue}
+                    />
+                </div>}
+    </>)
 }
 
 export default RevenueList;

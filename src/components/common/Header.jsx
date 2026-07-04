@@ -6,10 +6,8 @@ const Header = () => {
       <div className="logo">
         Revenue Aggregator Application
       </div>
-
       <div className="profile">
         <div className="avatar">TU</div>
-
         <div className="user-details">
           <span className="user-name">Test user</span>
         </div>

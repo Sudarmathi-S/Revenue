@@ -3,8 +3,7 @@
   overflow-x: auto;
   background: #ffffff;
   border-radius: 14px;
-  box-shadow:
-    0 6px 18px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
   border: 1px solid #e5e7eb;
   padding: 20px;
 }
@@ -66,7 +65,7 @@
 .product-table tfoot td {
   padding: 18px 20px;
   color: #1d3557;
-  border-top: 2px solid #2d4f95;
+  border-top: 2px solid #cedbf6;
 }
 
 /* Rounded Header */
@@ -77,4 +76,21 @@
 
 .product-table thead th:last-child {
   border-top-right-radius: 14px;
+}
+
+.product-table tfoot td {
+  border-bottom-width: 0px;
+}
+
+.product-table tfoot td:first-child {
+    border-bottom-left-radius: 14px;
+}
+
+.product-table tfoot td:last-child {
+    border-bottom-right-radius: 14px;
+}
+
+.center {
+  text-align: center !important;
+  align-items: center;
 }
